@@ -16,14 +16,14 @@ const tabDesc: any = {
 <section>
   <div class="row">
     <div class="col-md-12">
-     <tabset>
+      <sample-section [desc]="tabDesc.multiple1"><multiple-demo></multiple-demo></sample-section>
+      <!-- <tabset>
       <tab heading="Multiple">
-        <sample-section [desc]="tabDesc.multiple1"><multiple-demo></multiple-demo></sample-section>
       </tab>
       <tab heading="Single">
         <sample-section [desc]="tabDesc.single"><single-demo></single-demo></sample-section>
       </tab>
-    </tabset>
+    </tabset> -->
     </div>
   </div>
 </section>

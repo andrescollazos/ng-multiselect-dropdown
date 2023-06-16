@@ -13,116 +13,25 @@ export class MultipleDemoComponent implements OnInit {
   showAll = true;
   limitSelection = false;
   limitShow = false;
-  disableBangalore = true;
+  disableBangalore = false;
   cities: Array<any> = [];
   selectedItems: Array<any> = [];
   dropdownSettings: IDropdownSettings = {};
-  htmlCode = `
-    &lt;form [formGroup]="myForm"&gt;
-        &lt;ng-multiselect-dropdown
-            name="city"
-            [placeholder]="'Select City'"
-            [data]="cities"
-            formControlName="city"
-            [disabled]="disabled"
-            [settings]="dropdownSettings"
-            (onSelect)="onItemSelect($event)"
-            (onDeSelect)="onItemDeSelect($event)"&gt;
-        &lt;/ng-multiselect-dropdown&gt;
-   &lt;/form&gt;
-`;
-  typescriptCode = `
-    import { FormBuilder, FormGroup } from '@angular/forms';
-    import { Component, OnInit } from '@angular/core';
-
-    @Component({
-        selector: 'multiple-demo',
-        templateUrl: './multiple-demo.html'
-    })
-    export class MultipleDemoComponent implements OnInit {
-        myForm:FormGroup;
-        disabled = false;
-        ShowFilter = false;
-        limitSelection = false;
-        limitShow = false;
-        cities: Array<any> = [];
-        selectedItems: Array<any> = [];
-        dropdownSettings: any = {};
-        constructor(private fb: FormBuilder) {}
-
-        ngOnInit() {
-            this.cities = [
-                { item_id: 1, item_text: 'New Delhi', item_tooltip: 'The capital of India!' },
-                { item_id: 2, item_text: 'Mumbai' },
-                { item_id: 3, item_text: 'Bangalore' },
-                { item_id: 4, item_text: 'Pune' },
-                { item_id: 5, item_text: 'Chennai' },
-                { item_id: 6, item_text: 'Navsari' }
-            ];
-            this.selectedItems = [{ item_id: 4, item_text: 'Pune' }, { item_id: 6, item_text: 'Navsari' }];
-            this.dropdownSettings = {
-                singleSelection: false,
-                idField: 'item_id',
-                textField: 'item_text',
-                tooltipField: 'item_tooltip',
-                selectAllText: 'Select All',
-                unSelectAllText: 'UnSelect All',
-                itemsShowLimit: 99999,
-                allowSearchFilter: this.ShowFilter
-            };
-            this.myForm = this.fb.group({
-                city: [this.selectedItems]
-            });
-        }
-
-        onItemSelect(item: any) {
-            console.log('onItemSelect', item);
-        }
-        onSelectAll(items: any) {
-            console.log('onSelectAll', items);
-        }
-        toogleShowFilter() {
-            this.ShowFilter = !this.ShowFilter;
-            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
-        }
-
-        handleLimitSelection() {
-            if (this.limitSelection) {
-                this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
-            } else {
-                this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
-            }
-        }
-
-        handleLimitShow() {
-          if (this.limitShow) {
-            this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
-              itemsShowLimit: 3
-            });
-          } else {
-            this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
-              itemsShowLimit: 999999
-            });
-          }
-          console.log()
-        }
-    }
-`;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.cities = [
-      { item_id: 1, item_text: 'New Delhi', item_tooltip: 'The capital of India!' },
-      { item_id: 2, item_text: 'Mumbai' },
-      { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
-      { item_id: 4, item_text: 'Pune' },
-      { item_id: 5, item_text: 'Chennai' },
-      { item_id: 6, item_text: 'Navsari' }
+      { item_id: 1, item_text: 'Pereira', item_tooltip: 'The capital of Risaralda!' },
+      { item_id: 2, item_text: 'Manizales' },
+      { item_id: 3, item_text: 'Armenia', isDisabled: this.disableBangalore },
+      { item_id: 4, item_text: 'Santa Rosa de Cabal' },
+      { item_id: 5, item_text: 'Cartagena de Indias' },
+      { item_id: 6, item_text: 'Santiago de Cali' }
     ];
     this.selectedItems = [
-      { item_id: 4, item_text: 'Pune' },
-      { item_id: 6, item_text: 'Navsari' }
+      { item_id: 1, item_text: 'Pereira' },
+      { item_id: 6, item_text: 'Santiago de Cali' }
     ];
     this.dropdownSettings = {
       singleSelection: false,

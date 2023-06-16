@@ -38,30 +38,9 @@
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" [checked]="disableBangalore" [(ngModel)]="disableBangalore" (change)="handleDisableBangalore()"> Disable Bangalore
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
           <input type="button" (click)="handleReset()" value="reset">
         </label>
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">Settings</div>
-    <div class="panel-body">
-      <pre>
-       {{dropdownSettings | json}}
-      </pre>
-    </div>
-  </div>
-  <tabset>
-    <tab heading="Html">
-      <sh-code-viewer [code]="htmlCode" [language]="'html'"></sh-code-viewer>
-    </tab>
-    <tab heading="Typescript">
-      <sh-code-viewer [code]="typescriptCode" [language]="'typescript'"></sh-code-viewer>
-    </tab>
-  </tabset>
 </div>

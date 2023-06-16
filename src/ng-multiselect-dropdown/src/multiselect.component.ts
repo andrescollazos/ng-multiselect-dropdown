@@ -46,7 +46,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false,
-    allowRemoteDataSearch: false
+    allowRemoteDataSearch: false,
+    smartSearchEnabled: false,
   };
 
   @Input()
