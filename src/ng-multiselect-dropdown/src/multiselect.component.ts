@@ -2,6 +2,7 @@ import { Component, HostListener, forwardRef, Input, Output, EventEmitter, Chang
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 import { ListItem, IDropdownSettings } from "./multiselect.model";
 import { ListFilterPipe } from "./list-filter.pipe";
+import { faGear } from '@fortawesome/free-solid-svg-icons';
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -47,8 +48,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
     showSelectedItemsAtTop: false,
     defaultOpen: false,
     allowRemoteDataSearch: false,
-    smartSearchEnabled: false,
+    allowSmartSearch: false,
   };
+
+  faGear = faGear;
 
   @Input()
   public set placeholder(value: string) {
@@ -332,6 +335,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
       fields.push(prop);
     }
     return fields;
+  }
+
+  toggleSmartSearch() {
+    let tempSettings = {... this._settings};
+    tempSettings.allowSmartSearch = !tempSettings.allowSmartSearch;
+    this._settings = Object.assign(tempSettings);
   }
 
 }

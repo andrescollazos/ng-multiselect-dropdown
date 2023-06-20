@@ -10,7 +10,7 @@ export class MultipleDemoComponent implements OnInit {
   myForm: FormGroup;
   disabled = false;
   ShowFilter = true;
-  showAll = true;
+  showAll = false;
   limitSelection = false;
   limitShow = false;
   disableBangalore = false;
@@ -27,7 +27,9 @@ export class MultipleDemoComponent implements OnInit {
       { item_id: 3, item_text: 'Armenia', isDisabled: this.disableBangalore },
       { item_id: 4, item_text: 'Santa Rosa de Cabal' },
       { item_id: 5, item_text: 'Cartagena de Indias' },
-      { item_id: 6, item_text: 'Santiago de Cali' }
+      { item_id: 6, item_text: 'Santiago de Cali' },
+      { item_id: 7, item_text: 'Santa Lucía' },
+      { item_id: 8, item_text: 'Nariño' }
     ];
     this.selectedItems = [
       { item_id: 1, item_text: 'Pereira' },

@@ -81,6 +81,13 @@ $disable-background-color: #eceeef;
   }
 }
 
+.smart-search {
+  padding: 5px 10px !important;
+  small {
+    font-size: 70%;
+  }
+}
+
 .dropdown-list {
   position: absolute;
   padding-top: 6px;
@@ -106,10 +113,11 @@ $disable-background-color: #eceeef;
     border-bottom: 1px solid #ccc;
     position: relative;
     padding: 10px;
+    display: flex;
     input {
       border: 0px;
       width: 100%;
-      padding: 0px 0px 0px 26px;
+      padding: 0px 0px 0px 15px;
     }
     input:focus {
       outline: none;

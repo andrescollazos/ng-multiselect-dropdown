@@ -23,7 +23,11 @@
       </li>
       <li class="filter-textbox" *ngIf="(_data.length>0 || _settings.allowRemoteDataSearch) && _settings.allowSearchFilter">
         <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
+        <fa-icon class="fa-lg" [icon]="faGear" (click)="toggleSmartSearch()"></fa-icon>
       </li>
+    </ul>
+    <ul class="smart-search" *ngIf="_settings.allowSmartSearch">
+      <small>Smart search is enabled. Type and press enter to add word to search filter</small>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
       <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox" [attr.title]="item.tooltip">
