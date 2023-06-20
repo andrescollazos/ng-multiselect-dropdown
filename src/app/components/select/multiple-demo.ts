@@ -17,6 +17,7 @@ export class MultipleDemoComponent implements OnInit {
   cities: Array<any> = [];
   selectedItems: Array<any> = [];
   dropdownSettings: IDropdownSettings = {};
+  smartSearch = true;
 
   constructor(private fb: FormBuilder) {}
 
@@ -31,10 +32,7 @@ export class MultipleDemoComponent implements OnInit {
       { item_id: 7, item_text: 'Santa Lucía' },
       { item_id: 8, item_text: 'Nariño' }
     ];
-    this.selectedItems = [
-      { item_id: 1, item_text: 'Pereira' },
-      { item_id: 6, item_text: 'Santiago de Cali' }
-    ];
+    this.selectedItems = [];
     this.dropdownSettings = {
       singleSelection: false,
       defaultOpen: false,
@@ -45,7 +43,8 @@ export class MultipleDemoComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,
       itemsShowLimit: 999999,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: this.ShowFilter,
+      allowSmartSearch: this.smartSearch
     };
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -97,7 +96,7 @@ export class MultipleDemoComponent implements OnInit {
   handleLimitShow() {
     if (this.limitShow) {
       this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
-        itemsShowLimit: 3
+        itemsShowLimit: 2
       });
     } else {
       this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
@@ -105,6 +104,18 @@ export class MultipleDemoComponent implements OnInit {
       });
     }
     console.log()
+  }
+
+  handleSmartSearch() {
+    if ( this.smartSearch ) {
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        allowSmartSearch: true
+      });
+    } else {
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        allowSmartSearch: false
+      });
+    }
   }
 
 

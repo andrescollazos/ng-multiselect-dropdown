@@ -26,7 +26,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   _placeholder = "Select";
   private _sourceDataType = null; // to keep note of the source data type. could be array of string/number/object
   private _sourceDataFields: Array<String> = []; // store source data fields names
-  filter: ListItem = new ListItem(this.data);
+  filter: ListItem = new ListItem(this.data, 'ok');
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
     idField: "id",
@@ -106,7 +106,25 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private onChangeCallback: (_: any) => void = noop;
 
   onFilterTextChange($event) {
+    console.log('Change: ', $event);
     this.onFilterChange.emit($event);
+    // Encontrar el ultimo Id disponible
+    if ( this.filter.text ) {
+      let id = this.filter.filter.length - 1;
+      this.filter.filter[id] = this.filter.text.toString();
+    }
+
+  }
+
+  onFilterEnter() {
+    if ( this.filter ) {
+      if ( this._settings.allowSmartSearch ) {
+        this.filter.filter.push('');
+        this.filter.text = '';
+      } else {
+        this.filter.filter = [this.filter.text.toString()];
+      }
+    }
   }
 
   constructor(
@@ -341,6 +359,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
     let tempSettings = {... this._settings};
     tempSettings.allowSmartSearch = !tempSettings.allowSmartSearch;
     this._settings = Object.assign(tempSettings);
+  }
+
+  removeSearchWord(id: number) {
+    if ( this.filter ) {
+      this.filter.filter.splice(id, 1);
+    }
   }
 
 }

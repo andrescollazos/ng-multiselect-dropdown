@@ -26,9 +26,13 @@ export class ListItem {
   id: String | number;
   text: String | number;
   tooltip?: String | undefined;
+  filter: String[];
   isDisabled?: boolean;
 
-  public constructor(source: any) {
+  public constructor(source: any, msg?: string) {
+    if ( msg == 'ok') {
+      console.log('Source: ', source, typeof source);
+    }
     if (typeof source === 'string' || typeof source === 'number') {
       this.id = this.text = source;
       this.isDisabled = false;
@@ -39,5 +43,6 @@ export class ListItem {
       this.tooltip = source.tooltip;
       this.isDisabled = source.isDisabled;
     }
+    this.filter = [''];
   }
 }
