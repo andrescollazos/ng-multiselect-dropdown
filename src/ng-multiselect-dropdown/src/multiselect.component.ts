@@ -106,7 +106,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private onChangeCallback: (_: any) => void = noop;
 
   onFilterTextChange($event) {
-    console.log('Change: ', $event);
     this.onFilterChange.emit($event);
     // Encontrar el ultimo Id disponible
     if ( this.filter.text ) {
@@ -363,7 +362,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   removeSearchWord(id: number) {
     if ( this.filter ) {
-      this.filter.filter.splice(id, 1);
+      setTimeout(() => {
+        this.filter.filter.splice(id, 1);
+        this.cdr.markForCheck();
+      }, 50);
+      // this.filter.filter.splice(id, 1);
     }
   }
 

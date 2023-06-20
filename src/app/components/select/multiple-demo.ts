@@ -52,16 +52,16 @@ export class MultipleDemoComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    console.log('onItemSelect', item);
-    console.log('form model', this.myForm.get('city').value);
+    // console.log('onItemSelect', item);
+    // console.log('form model', this.myForm.get('city').value);
   }
   onItemDeSelect(item: any) {
-    console.log('onItem DeSelect', item);
-    console.log('form model', this.myForm.get('city').value);
+    // console.log('onItem DeSelect', item);
+    // console.log('form model', this.myForm.get('city').value);
   }
 
   onSelectAll(items: any) {
-    console.log('onSelectAll', items);
+    // console.log('onSelectAll', items);
   }
 
   onDropDownClose() {

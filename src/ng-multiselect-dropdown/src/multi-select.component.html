@@ -30,7 +30,7 @@
     <ul class="smart-search" *ngIf="_settings.allowSmartSearch">
       <li *ngFor="let item of filter.filter; let i = index;">
         <span>{{ i + 1 }}. {{ item }}&nbsp;</span>
-        <a style="padding-left:2px;color:white" (click)="removeSearchWord(i)">x</a>
+        <span *ngIf="item" style="padding-left:2px;color:black" (click)="removeSearchWord(i)">x</span>
       </li>
       <small>Smart search is enabled. Type and press enter to add word to search filter</small>
     </ul>
