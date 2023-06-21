@@ -83,8 +83,26 @@ $disable-background-color: #eceeef;
 
 .smart-search {
   padding: 5px 10px !important;
+  display: flex;
   small {
     font-size: 70%;
+  }
+  .selected-item{
+    border: 1px solid $base-color;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    background: $base-color;
+    padding: 0px 5px;
+    color: #fff;
+    border-radius: 2px;
+    float: left;
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    a {
+      text-decoration: none;
+    }
   }
 }
 

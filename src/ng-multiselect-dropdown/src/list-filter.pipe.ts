@@ -20,6 +20,7 @@ export class ListFilterPipe implements PipeTransform {
 
     applyFilter(item: ListItem, filter: ListItem): boolean {
         let text = item.text ? this.clStr(item.text) : '';
+        console.log('Filter text: ', filter.text, filter.filter, filter);
         let filters = filter.text ?
             filter.text.toString().split(this.separationCode).map(t => this.clStr(t))
             : [];

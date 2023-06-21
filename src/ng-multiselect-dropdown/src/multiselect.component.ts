@@ -26,7 +26,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   _placeholder = "Select";
   private _sourceDataType = null; // to keep note of the source data type. could be array of string/number/object
   private _sourceDataFields: Array<String> = []; // store source data fields names
-  filter: ListItem = new ListItem(this.data, 'ok');
+  filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
     idField: "id",
@@ -108,15 +108,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
   onFilterTextChange($event) {
     this.onFilterChange.emit($event);
     // Encontrar el ultimo Id disponible
-    if ( this.filter.text ) {
+    if ( this.filter.text != undefined ) {
       let id = this.filter.filter.length - 1;
-      this.filter.filter[id] = this.filter.text.toString();
+      this.filter.filter[id] = this.filter.text ? this.filter.text.toString() : '';
     }
 
   }
 
   onFilterEnter() {
-    if ( this.filter ) {
+    if ( this.filter.text ) {
       if ( this._settings.allowSmartSearch ) {
         this.filter.filter.push('');
         this.filter.text = '';
@@ -366,7 +366,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
         this.filter.filter.splice(id, 1);
         this.cdr.markForCheck();
       }, 50);
-      // this.filter.filter.splice(id, 1);
     }
   }
 

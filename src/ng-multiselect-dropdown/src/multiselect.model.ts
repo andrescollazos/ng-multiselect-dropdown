@@ -29,10 +29,7 @@ export class ListItem {
   filter: String[];
   isDisabled?: boolean;
 
-  public constructor(source: any, msg?: string) {
-    if ( msg == 'ok') {
-      console.log('Source: ', source, typeof source);
-    }
+  public constructor(source: any) {
     if (typeof source === 'string' || typeof source === 'number') {
       this.id = this.text = source;
       this.isDisabled = false;
