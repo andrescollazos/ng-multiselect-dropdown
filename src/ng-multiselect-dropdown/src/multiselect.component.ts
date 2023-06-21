@@ -358,6 +358,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
     let tempSettings = {... this._settings};
     tempSettings.allowSmartSearch = !tempSettings.allowSmartSearch;
     this._settings = Object.assign(tempSettings);
+    if ( this.filter ) {
+      this.filter.text = '';
+      this.filter.filter = [''];
+    }
   }
 
   removeSearchWord(id: number) {
