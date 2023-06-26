@@ -87,7 +87,13 @@ $disable-background-color: #eceeef;
   small {
     font-size: 70%;
   }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
   .selected-item{
+    display: flex;
+    max-height: 20px;
     border: 1px solid $base-color;
     margin-right: 4px;
     margin-bottom: 4px;
@@ -99,9 +105,6 @@ $disable-background-color: #eceeef;
     span {
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-    a {
-      text-decoration: none;
     }
   }
 }

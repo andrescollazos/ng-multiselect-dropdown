@@ -2,7 +2,7 @@ import { Component, HostListener, forwardRef, Input, Output, EventEmitter, Chang
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 import { ListItem, IDropdownSettings } from "./multiselect.model";
 import { ListFilterPipe } from "./list-filter.pipe";
-import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -52,6 +52,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   };
 
   faGear = faGear;
+  faClear = faTrash;
 
   @Input()
   public set placeholder(value: string) {
@@ -364,12 +365,26 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
+  canDeleteAll() {
+    return this.filter ? this.filter.filter.length > 2 : false;
+  }
+
+  removeAllSearchWord() {
+    if ( this.filter ) {
+      setTimeout(() => {
+        this.filter.text = '';
+        this.filter.filter = [''];
+        this.cdr.markForCheck();
+      }, 100);
+    }
+  }
+
   removeSearchWord(id: number) {
     if ( this.filter ) {
       setTimeout(() => {
         this.filter.filter.splice(id, 1);
         this.cdr.markForCheck();
-      }, 50);
+      }, 100);
     }
   }
 
