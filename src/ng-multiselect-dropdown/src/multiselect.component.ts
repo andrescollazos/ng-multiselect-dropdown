@@ -365,8 +365,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
-  canDeleteAll() {
+  canRemoveAll() {
     return this.filter ? this.filter.filter.length > 2 : false;
+  }
+
+  canRemoveItem(item: any, id: number) {
+    return item && (this.filter ? id < this.filter.filter.length - 1 : false);
   }
 
   removeAllSearchWord() {

@@ -30,13 +30,13 @@
     <!-- Smart Search Section -->
     <ul class="smart-search" *ngIf="_settings.allowSmartSearch">
       <!-- Delete All Filter words -->
-      <a *ngIf="canDeleteAll()" style="padding-left:2px;color:red" (click)="removeAllSearchWord()">X&nbsp;</a>
+      <a *ngIf="canRemoveAll()" style="color:#ff0000" (click)="removeAllSearchWord()">X&nbsp;</a>
       <!-- Filter Words -->
       <li *ngFor="let item of filter.filter; let i = index;" class="selected-item">
         <!-- Filter word -->
         <span>{{ item }}&nbsp;</span>
         <!-- Remove filter word -->
-        <a *ngIf="item" style="padding-left:2px;color:white" (click)="removeSearchWord(i)">x</a>
+        <a *ngIf="canRemoveItem(item, i)" style="padding-left:2px;color:white" (click)="removeSearchWord(i)">x</a>
       </li>
       <!-- Hint -->
       <small *ngIf="filter.filter.length <= 1" >Smart search is enabled. Type and press enter to add word to search filter</small>
